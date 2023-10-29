@@ -9,4 +9,4 @@ class SpriteRenderer(Component):
         self.sprite = sprite
 
     def Render(self, screen):
-        screen.blit(self.sprite.img, (200,250))
+        screen.blit(self.sprite.img, (Vector.ToList(self.transform.position - Vector.one * self.sprite.PPU/2)))

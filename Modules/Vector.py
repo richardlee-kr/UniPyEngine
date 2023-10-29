@@ -49,6 +49,10 @@ class Vector:
     def Dot(v1, v2):
         return (v1.x*v2.x + v1.y*v2.y)
 
+    @staticmethod
+    def ToList(v1):
+        return (v1.x, v1.y)
+
 Vector.right = Vector(1,0)
 Vector.left = Vector(-1,0)
 Vector.up = Vector(0,1)
