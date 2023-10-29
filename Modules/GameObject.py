@@ -15,5 +15,4 @@ class GameObject:
     def GetComponent(self, cmpnt):
         for item in self.components:
             if cmpnt == item.name:
-                print("find")
                 return item
