@@ -5,7 +5,7 @@ class GameObject:
         self.name = name
         self.transform = Transform()
         self.components = list()
-        self.components.append(self.transform)
+        self.AddComponent(self.transform)
     
     def AddComponent(self, cmpnt):
         self.components.append(cmpnt)
