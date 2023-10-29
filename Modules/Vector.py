@@ -2,8 +2,8 @@ import math
 
 class Vector:
     def __init__(self, x, y):
-        if x < 1.0e-10: x = 0
-        if y < 1.0e-10: y = 0
+        if -1.0e-10 < x < 1.0e-10: x = 0
+        if -10.e-10 < y < 1.0e-10: y = 0
 
         self.x = x
         self.y = y
