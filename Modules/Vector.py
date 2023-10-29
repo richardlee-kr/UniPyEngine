@@ -2,6 +2,9 @@ import math
 
 class Vector:
     def __init__(self, x, y):
+        if x < 1.0e-10: x = 0
+        if y < 1.0e-10: y = 0
+
         self.x = x
         self.y = y
         self.magnitude = math.sqrt(x*x + y*y)
@@ -31,12 +34,12 @@ class Vector:
 
     @staticmethod
     def Angle(v1, v2):
-        return math.degrees(math.acos(Vector.Dot(v1, v2) / (v1.magnitude * v2.magnitude)))
-        #return math.acos(Vector.Dot(v1, v2) / (v1.magnitude * v2.magnitude))
+        #return math.degrees(math.acos(Vector.Dot(v1, v2) / (v1.magnitude * v2.magnitude)))
+        return math.acos(Vector.Dot(v1, v2) / (v1.magnitude * v2.magnitude))
     @staticmethod
     def Angle(v1):
-        return math.degrees(math.acos(Vector.Dot(v1, Vector.right) / (v1.magnitude * Vector.right.magnitude)))
-        #return math.acos(Vector.Dot(v1, Vector.right) / (v1.magnitude * Vector.right.magnitude))
+        #return math.degrees(math.acos(Vector.Dot(v1, Vector.right) / (v1.magnitude * Vector.right.magnitude)))
+        return math.acos(Vector.Dot(v1, Vector.right) / (v1.magnitude * Vector.right.magnitude))
 
     @staticmethod
     def Distance(v1, v2):
