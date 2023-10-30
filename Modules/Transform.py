@@ -7,6 +7,7 @@ class Transform(Component):
         self.name = "Transform"
         self.position = Vector.zero
         self.rotation = 0
+        self.scale = Vector.one
         self.parent = None
         self.child = list()
         self.childCount = len(self.child)

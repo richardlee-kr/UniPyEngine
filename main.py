@@ -15,6 +15,7 @@ go = GameObject("TestObject")
 sprite = Sprite("Sprite/Character_Right.png")
 go.AddComponent(SpriteRenderer())
 go.transform.position = Vector(200,250)
+go.transform.scale = Vector.one * 5
 
 _clip = AnimationClip(clock, 8)
 _clip.AddBySpriteSheet(sprite)
