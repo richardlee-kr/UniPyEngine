@@ -4,6 +4,7 @@ from math import *
 
 class Transform(Component):
     def __init__(self):
+        super(Transform, self).__init__(self)
         self.name = "Transform"
         self.position = Vector.zero
         self.rotation = 0

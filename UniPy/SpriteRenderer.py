@@ -1,10 +1,11 @@
 from .Component import *
 from .Vector import *
-from Sprite import *
+from .Sprite import *
 import pygame
 
 class SpriteRenderer(Component):
     def __init__(self, sprite = None):
+        super(SpriteRenderer, self).__init__(self)
         self.name = "SpriteRenderer"
         self.sprite = sprite
 
