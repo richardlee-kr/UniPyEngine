@@ -1,4 +1,4 @@
-from Modules.Component import *
+from .Component import *
 
 class Animator(Component):
     def __init__(self):

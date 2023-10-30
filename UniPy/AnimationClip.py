@@ -1,6 +1,6 @@
-from Modules.Transition import *
-from Modules.Sprite import *
-from Modules.SpriteRenderer import *
+from .Transition import *
+from .Sprite import *
+from .SpriteRenderer import *
 import pygame
 
 class AnimationClip:

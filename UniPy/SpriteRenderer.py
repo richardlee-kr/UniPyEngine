@@ -1,5 +1,5 @@
-from Modules.Component import *
-from Modules.Vector import *
+from .Component import *
+from .Vector import *
 from Sprite import *
 import pygame
 

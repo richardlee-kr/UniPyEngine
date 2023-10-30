@@ -1,4 +1,4 @@
-from Unipy import *
+from UniPy import *
 import pygame
 
 SCREEN_WIDTH = 400

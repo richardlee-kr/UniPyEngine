@@ -1,4 +1,4 @@
-from Modules.Transform import *
+from .Transform import *
 
 class GameObject:
     def __init__(self, name):
