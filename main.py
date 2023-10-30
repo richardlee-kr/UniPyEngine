@@ -1,5 +1,5 @@
+from Unipy import *
 import pygame
-from Core import *
 
 SCREEN_WIDTH = 400
 SCREEN_HEIGHT  = 500
