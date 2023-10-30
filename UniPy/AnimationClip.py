@@ -31,6 +31,10 @@ class AnimationClip:
         sprite.PPU = size
         return sprite
 
+    def AddBySpriteList(self, sprites):
+        for item in sprites:
+            self.frames.append(item)
+
     def AddTransition(self, transition):
         self.transitions.append(transition)
     
