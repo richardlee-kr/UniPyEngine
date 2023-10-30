@@ -1,7 +1,8 @@
-from .Component import *
+from ..Component import *
 
 class Animator(Component):
     def __init__(self):
+        super(Animator, self).__init__(self)
         self.name = "Animator"
         self.entry = None
         self.states = list()
