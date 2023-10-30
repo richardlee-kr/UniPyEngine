@@ -23,6 +23,9 @@ _clip.AddBySpriteSheet(sprite)
 go.AddComponent(Animator())
 go.GetComponent("Animator").SetClip(_clip)
 
+go.AddComponent(BoxCollider())
+print(go.GetComponent("BoxCollider").size)
+
 
 playing = True
 while playing:
