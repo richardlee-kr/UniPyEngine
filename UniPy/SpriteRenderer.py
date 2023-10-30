@@ -5,7 +5,7 @@ import pygame
 
 class SpriteRenderer(Component):
     def __init__(self, sprite = None):
-        super(SpriteRenderer, self).__init__(self)
+        super(SpriteRenderer, self).__init__()
         self.name = "SpriteRenderer"
         self.sprite = sprite
 
