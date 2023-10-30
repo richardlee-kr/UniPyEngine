@@ -1,2 +1,2 @@
-from BoxCollider import *
-from CircleCollider import *
+from .BoxCollider import *
+from .CircleCollider import *
