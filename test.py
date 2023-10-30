@@ -23,6 +23,7 @@ _clip.AddBySpriteSheet(sprite)
 go.AddComponent(Animator())
 go.GetComponent("Animator").SetClip(_clip)
 
+
 playing = True
 while playing:
     for event in pygame.event.get():
