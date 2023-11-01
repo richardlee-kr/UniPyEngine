@@ -26,6 +26,12 @@ go.GetComponent("Animator").SetClip(_clip)
 go.AddComponent(BoxCollider())
 print(go.GetComponent("BoxCollider").size)
 
+def func(other):
+    if(other.name == "asdf"):
+        print(other.name)
+
+go.GetComponent("BoxCollider").OnTriggerEnter(func)
+
 
 playing = True
 while playing:
@@ -36,6 +42,7 @@ while playing:
     go.GetComponent("SpriteRenderer").Render(SCREEN)
 
     go.GetComponent("Animator").Update()
+    go.transform.rotation += 1
 
     pygame.display.flip()
     clock.tick(FPS)
