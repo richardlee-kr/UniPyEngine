@@ -11,27 +11,40 @@ clock = pygame.time.Clock()
 
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-go = GameObject("TestObject")
-sprite = Sprite("Sprite/Character_Right.png")
-go.AddComponent(SpriteRenderer())
-go.transform.position = Vector(200,250)
-go.transform.scale = Vector.one * 5
+testScene = Scene("TestScene", SCREEN)
+pygame.display.set_caption(testScene.sceneName)
 
+go = GameObject("TestObject")
+go.AddComponent(SpriteRenderer())
+go.AddComponent(Animator())
+go.AddComponent(BoxCollider())
+
+go.transform.position = Vector(200,250)
+go.transform.scale = Vector.one * 2
+
+sprite = Sprite("Sprite/Character_Right.png")
 _clip = AnimationClip(clock, 8)
 _clip.AddBySpriteSheet(sprite)
-
-go.AddComponent(Animator())
 go.GetComponent("Animator").SetClip(_clip)
 
-go.AddComponent(BoxCollider())
-print(go.GetComponent("BoxCollider").size)
+sprite = Sprite("Sprite/Character_Right1.png")
+go1 = GameObject("TestObject")
+go1.AddComponent(SpriteRenderer(sprite))
+go1.AddComponent(BoxCollider())
+
+go1.transform.position = Vector(250,250)
+go1.transform.scale = Vector.one * 2
+
+testScene.hierarchy.append(go)
+testScene.hierarchy.append(go1)
 
 def func(other):
     if(other.name == "asdf"):
         print(other.name)
 
-go.GetComponent("BoxCollider").OnTriggerEnter(func)
+#go.GetComponent("BoxCollider").OnTriggerEnter(func)
 
+#go.transform.scale = Vector(-1,1) * 5
 
 playing = True
 while playing:
@@ -39,10 +52,7 @@ while playing:
         if event.type == pygame.QUIT:
             playing = False
 
-    go.GetComponent("SpriteRenderer").Render(SCREEN)
-
-    go.GetComponent("Animator").Update()
-    go.transform.rotation += 1
+    testScene.Update()
 
     pygame.display.flip()
     clock.tick(FPS)

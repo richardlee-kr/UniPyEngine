@@ -6,3 +6,5 @@ from .SpriteRenderer import *
 from .Sprite import *
 from .Animation import *
 from .Collision import *
+from .Scene import *
+from .Camera import *

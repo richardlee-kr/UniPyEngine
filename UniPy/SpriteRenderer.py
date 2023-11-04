@@ -11,7 +11,9 @@ class SpriteRenderer(Component):
 
     def Render(self, screen):
         if self.sprite != None:
-            self.sprite.img = pygame.transform.scale(self.sprite.img, Vector.ToList(self.transform.scale * self.sprite.PPU))
+            #TODO Set Flip
+            #self.sprite.img = pygame.transform.flip(self.sprite.img, self.transform.scale.x < 0, self.transform.scale.y < 0)
+            self.sprite.img = pygame.transform.scale(self.sprite.img, Vector.ToList(Vector.Abs(self.transform.scale) * self.sprite.PPU))
             self.Rotate(screen, self.transform.rotation)
             #screen.blit(self.sprite.img, (Vector.ToList(self.transform.position - self.transform.scale * self.sprite.PPU/2)))
     
