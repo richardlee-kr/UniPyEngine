@@ -5,7 +5,6 @@ class Scene:
         self.sceneName = name
         self.screen = screen
         self.hierarchy = list()
-        self.process = list()
 
     def Update(self):
         for object in self.hierarchy:
