@@ -37,9 +37,9 @@ class Vector:
         #return math.degrees(math.acos(Vector.Dot(v1, v2) / (v1.magnitude * v2.magnitude)))
         return math.acos(Vector.Dot(v1, v2) / (v1.magnitude * v2.magnitude))
     @staticmethod
-    def Angle(v1):
+    def Angle(v):
         #return math.degrees(math.acos(Vector.Dot(v1, Vector.right) / (v1.magnitude * Vector.right.magnitude)))
-        return math.acos(Vector.Dot(v1, Vector.right) / (v1.magnitude * Vector.right.magnitude))
+        return math.acos(Vector.Dot(v, Vector.right) / (v.magnitude * Vector.right.magnitude))
 
     @staticmethod
     def Distance(v1, v2):
@@ -50,8 +50,12 @@ class Vector:
         return (v1.x*v2.x + v1.y*v2.y)
 
     @staticmethod
-    def ToList(v1):
-        return (v1.x, v1.y)
+    def ToList(v):
+        return (v.x, v.y)
+
+    @staticmethod
+    def Abs(v):
+        return Vector(abs(v.x), abs(v.y))
 
 Vector.right = Vector(1,0)
 Vector.left = Vector(-1,0)
