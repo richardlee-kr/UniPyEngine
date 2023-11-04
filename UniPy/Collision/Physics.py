@@ -2,8 +2,8 @@ from ..Vector import *
 
 #TODO Overlap Physics
 class Physics:
-    def __init__(self):
-        pass
+    def __init__(self, targetScene):
+        self.scene = targetScene
 
     '''
     Add all objects which have Collider in Scene to list
@@ -12,19 +12,50 @@ class Physics:
     Return list
     '''
 
-    @staticmethod
-    async def OverlapCircle(point, radius, layer="Default"):
-        allOfObject = []
-        detected = []
-    @staticmethod
-    async def OverlapCircleAll(point, radius, layer="Default"):
-        allOfObject = []
-        detected = []
-    @staticmethod
-    async def OverlapBox(point, size, layer="Default"):
-        allOfObject = []
-        detected = []
-    @staticmethod
-    async def OverlapBoxAll(point, size, layer="Default"):
-        allOfObject = []
-        detected = []
+    async def OverlapCircleAll(self, point, radius, layer="Default"):
+        allObjects = self.scene.hierarchy
+        layered = list()
+        detected = list()
+        for object in allObjects:
+            if object.layer == layer:
+                layered.append(object)
+        
+        del allObjects
+
+        for object in layered:
+            try:
+                #if obejct has CircleCollider
+                _radius = object.GetComponent("CircleCollider").radius
+                _pos = object.GetComponent("CircleCollider").bounds.center + object.transform.position
+                if (point-_pos).magnitude <= abs(radius+_radius):
+                    detected.append(object)
+            except:
+                try:
+                    # else object has BoxCollider
+                    pass
+                except:
+                    continue
+
+        return detected
+
+    async def OverlapBoxAll(self, point, size, layer="Default"):
+        allObjects = self.scene.hierarchy
+        layered = list()
+        detected = list()
+        for object in allObjects:
+            if object.layer == layer:
+                layered.append(object)
+
+        del allObjects
+
+        for object in layered:
+            try:
+                #if obejct has BoxCollider
+                _size = object.GetComponent("BoxCollider").size
+                _pos = object.GetComponent("BoxCollider").bounds.center
+            except:
+                try:
+                    # else object has CircleColldier
+                    pass
+                except:
+                    continue
