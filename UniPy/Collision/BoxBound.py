@@ -6,4 +6,4 @@ class BoxBound(Bound):
         super(BoxBound, self).__init__(center)
         self.size = size
         # TODO bad operand type for unary -: Vector
-        #self.points = ((center+Vector(-size,-size)), center+Vector(-size,size), center+Vector(size,size), center+Vector(size,-size))
+        self.points = (center+Vector(-size.x,-size.y), center+Vector(-size.x,size.y), center+Vector(size.x,size.y), center+Vector(size.x,-size.y))
