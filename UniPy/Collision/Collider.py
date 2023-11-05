@@ -10,6 +10,7 @@ class Collider(Component):
         self.offset = Vector.zero
         self.bounds = None
         self.isTrigger = False
+        self.isVisible = True
 
     #TODO Trigger callback
     def OnTriggerEnter(self, func):

@@ -51,8 +51,7 @@ class Physics:
         for object in layered:
             try:
                 #if obejct has BoxCollider
-                _size = object.GetComponent("BoxCollider").size
-                _pos = object.GetComponent("BoxCollider").bounds.center
+                _points = object.GetComponent("BoxCollider").bounds.points
             except:
                 try:
                     # else object has CircleColldier
