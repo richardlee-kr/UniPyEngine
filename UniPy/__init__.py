@@ -8,3 +8,4 @@ from .Animation import *
 from .Collision import *
 from .Scene import *
 from .Camera import *
+from .Color import *
