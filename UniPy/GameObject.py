@@ -18,3 +18,12 @@ class GameObject:
         for item in self.components:
             if cmpnt == item.name:
                 return item
+
+    def Update(self):
+        pass
+
+    @staticmethod
+    def Instantiate(scene, object, pos, rot):
+        scene.hierarchy.append(object)
+        object.transform.position = pos
+        object.transform.Rotate(rot)
