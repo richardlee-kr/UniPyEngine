@@ -1,6 +1,6 @@
 from .Collider import *
 from .CircleBound import *
-from ..Color import *
+from ..UniColor import *
 import pygame
 
 class CircleCollider(Collider):
@@ -15,4 +15,4 @@ class CircleCollider(Collider):
             self.Draw(screen)
 
     def Draw(self, screen):
-        pygame.draw.circle(screen, Color.green, [self.transform.position.x, self.transform.position.y], self.radius, 1)
+        pygame.draw.circle(screen, UniColor.green, [self.transform.position.x, self.transform.position.y], self.radius, 1)
