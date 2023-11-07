@@ -1,6 +1,6 @@
 from .Collider import *
 from .BoxBound import *
-from ..Color import *
+from ..UniColor import *
 import pygame
 
 class BoxCollider(Collider):
