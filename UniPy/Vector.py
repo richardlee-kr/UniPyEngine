@@ -59,7 +59,7 @@ class Vector:
 
 Vector.right = Vector(1,0)
 Vector.left = Vector(-1,0)
-Vector.up = Vector(0,1)
-Vector.down = Vector(0,-1)
+Vector.up = Vector(0,-1)
+Vector.down = Vector(0,1)
 Vector.one = Vector(1,1)
 Vector.zero = Vector(0,0)
