@@ -22,6 +22,10 @@ class GameObject:
     def Update(self):
         pass
 
+    def DestroyFrom(self, scene):
+        scene.hierarchy.remove(self)
+        del self
+
     @staticmethod
     def Instantiate(scene, object, pos, rot):
         scene.hierarchy.append(object)
