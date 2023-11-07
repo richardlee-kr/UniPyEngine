@@ -1,5 +1,3 @@
-from multiprocessing import Process, Queue
-
 class Scene:
     def __init__(self, name, screen):
         self.sceneName = name
@@ -8,6 +6,10 @@ class Scene:
 
     def Update(self):
         for object in self.hierarchy:
+            if object.transform.position.x > 1080 + 20 or object.transform.position.x < 0 - 20 or object.transform.position.y > 720 + 20 or object.transform.position.y < 0 - 20:
+                self.hierarchy.remove(object)
+
+            object.Update()
             try:
                 object.GetComponent("SpriteRenderer").Render(self.screen)
             except:
@@ -19,7 +21,7 @@ class Scene:
             try:
                 object.GetComponent("BoxCollider").Update(self.screen)
             except:
-                continue
+                pass
             try:
                 object.GetComponent("CircleCollider").Update(self.screen)
             except:
