@@ -12,13 +12,14 @@ class Physics:
     Return list
     '''
 
-    async def OverlapCircleAll(self, point, radius, layer="Default"):
+    def OverlapCircleAll(self, point, radius, layer="Default"):
         allObjects = self.scene.hierarchy
         layered = list()
         detected = list()
         for object in allObjects:
             if object.layer == layer:
-                layered.append(object)
+                if (object.transform.position - point).magnitude < 2*radius:
+                    layered.append(object)
         
         del allObjects
 
@@ -27,7 +28,7 @@ class Physics:
                 #if obejct has CircleCollider
                 _radius = object.GetComponent("CircleCollider").radius
                 _pos = object.GetComponent("CircleCollider").bounds.center + object.transform.position
-                if (point-_pos).magnitude <= abs(radius+_radius):
+                if (point-_pos).magnitude <= radius+_radius:
                     detected.append(object)
             except:
                 try:

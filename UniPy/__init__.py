@@ -8,17 +8,23 @@ from .Animation import *
 from .Collision import *
 from .Scene import *
 from .Camera import *
-from .Color import *
+from .UniColor import *
 
 import asyncio
 import pygame
+from pygame.locals import *
+
 WIDTH = 1080
 HEIGHT = 720
-FPS = 120
+FPS = 30
+
+flags = DOUBLEBUF
 
 pygame.init()
 clock = pygame.time.Clock()
-SCREEN = pygame.display.set_mode((WIDTH,HEIGHT))
+SCREEN = pygame.display.set_mode((WIDTH,HEIGHT), flags, 8)
+pygame.event.set_allowed([QUIT, KEYDOWN, KEYUP])
+SCREEN.set_alpha(None)
 
 scene = Scene("Maverick Gunner", SCREEN)
 physics = Physics(scene)
