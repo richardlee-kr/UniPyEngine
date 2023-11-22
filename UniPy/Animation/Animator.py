@@ -1,5 +1,6 @@
 from ..Component import *
 
+# TODO: Transition and Graph
 class Animator(Component):
     def __init__(self):
         super(Animator, self).__init__()

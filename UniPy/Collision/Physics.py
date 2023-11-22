@@ -1,6 +1,5 @@
 from ..Vector import *
 
-#TODO Overlap Physics
 class Physics:
     def __init__(self, targetScene):
         self.scene = targetScene
