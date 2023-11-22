@@ -18,7 +18,7 @@ class Physics:
         detected = list()
         for object in allObjects:
             if object.layer == layer:
-                if (object.transform.position - point).magnitude < 2*radius:
+                if (object.transform.position - point).magnitude < 3*radius:
                     layered.append(object)
         
         del allObjects
@@ -33,8 +33,24 @@ class Physics:
             except:
                 try:
                     # else object has BoxCollider
-                    pass
+                    objectPos = object.transform.position
+                    boundSize = object.GetComponent("BoxCollider").bounds.size
+                    testX = point.x
+                    testY = point.y
+                    if (point.x < objectPos.x-boundSize.x/2): testX = objectPos.x-boundSize.x/2
+                    elif (point.x > objectPos.x+boundSize.x/2): testX = objectPos.x+boundSize.x/2
+                    if (point.y < objectPos.y-boundSize.y/2): testY = objectPos.y-boundSize.y/2
+                    elif (point.y > objectPos.y+boundSize.y/2): testY = objectPos.y+boundSize.y/2
+
+                    distX = point.x-testX
+                    distY = point.y-testY
+
+                    distance = math.sqrt((distX*distX)+(distY*distY))
+
+                    if(distance <= radius):
+                        detected.append(object)
                 except:
+                    # no collider
                     continue
 
         return detected
@@ -61,9 +77,22 @@ class Physics:
             except:
                 try:
                     # else object has CircleColldier
-                    print("NO")
-                    pass
+                    _radius = object.GetComponent("CircleCollider").radius
+                    _pos = object.GetComponent("CircleCollider").bounds.center + object.transform.position
+                    testX = _pos.x
+                    testY = _pos.y
+                    if (_pos.x < point.x-size/2): testX = point.x-size/2
+                    elif (_pos.x > point.x+size/2): testX = point.x+size/2
+                    if (_pos.y < point.y-size/2): testY = point.y-size/2
+                    elif(_pos.y > point.y+size/2): testY = point.y+size/2
+
+                    distX = _pos.x - testX
+                    distY = _pos.y - testY
+                    distance = math.sqrt((distX*distX)+(distY*distY))
+                    if(distance <= _radius):
+                        detected.append(object)
                 except:
+                    # no collider
                     continue
 
         return detected

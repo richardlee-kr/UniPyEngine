@@ -54,8 +54,6 @@ def func(other):
 
 #go.transform.scale = Vector(-1,1) * 5
 
-print(go1.layer)
-
 playing = True
 while playing:
     for event in pygame.event.get():
@@ -64,8 +62,8 @@ while playing:
 
     SCREEN.fill([0,0,0])
 
-    #detected = physics.OverlapCircleAll(Vector(200,250), 16)
-    detected = physics.OverlapBoxAll(Vector(200,250), 32)
+    detected = physics.OverlapCircleAll(Vector(200,250), 16)
+    #detected = physics.OverlapBoxAll(Vector(200,250), 32)
     #print(len(detected))
 
     if len(detected) > 0:
@@ -78,8 +76,8 @@ while playing:
 
     testScene.Update()
     #pygame.draw.circle(SCREEN, Color.green, [go1.transform.position.x, go1.transform.position.y], go1.GetComponent("CircleCollider").radius ,1)
-    #pygame.draw.circle(SCREEN, _color, [200,250], 16 ,1)
-    pygame.draw.rect(SCREEN, _color, [200-16,250-16,32,32], 1)
+    pygame.draw.circle(SCREEN, _color, [200,250], 16 ,1)
+    #pygame.draw.rect(SCREEN, _color, [200-16,250-16,32,32], 1)
 
     pygame.display.flip()
     clock.tick(FPS)
