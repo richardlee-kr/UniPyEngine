@@ -15,4 +15,4 @@ class BoxCollider(Collider):
             self.Draw(screen)
 
     def Draw(self, screen):
-        pygame.draw.rect(screen, Color.green, [self.transform.position.x-self.size.x/2, self.transform.position.y-self.size.y/2, self.size.x, self.size.y], 1)
+        pygame.draw.rect(screen, UniColor.green, [self.transform.position.x-self.size.x/2, self.transform.position.y-self.size.y/2, self.size.x, self.size.y], 1)
