@@ -39,7 +39,7 @@ class Physics:
 
         return detected
 
-    async def OverlapBoxAll(self, point, size, layer="Default"):
+    def OverlapBoxAll(self, point, size, layer="Default"):
         allObjects = self.scene.hierarchy
         layered = list()
         detected = list()
@@ -52,10 +52,18 @@ class Physics:
         for object in layered:
             try:
                 #if obejct has BoxCollider
-                _points = object.GetComponent("BoxCollider").bounds.points
+                objectPos = object.transform.position
+                boundSize = object.GetComponent("BoxCollider").bounds.size
+                #print(objectPos.x + boundSize.x/2 >= point.x - size/2)
+                if (objectPos.x + boundSize.x/2 >= point.x - size/2 and objectPos.x - boundSize.x/2 <= point.x + size/2):
+                    if(objectPos.y + boundSize.y/2 >= point.y - size/2 and objectPos.y - boundSize.y/2 <= point.y + size/2):
+                        detected.append(object)
             except:
                 try:
                     # else object has CircleColldier
+                    print("NO")
                     pass
                 except:
                     continue
+
+        return detected
