@@ -1,6 +1,10 @@
 from ..Component import *
-
-# TODO: Transition Graph
+'''
+TODO: Transition Graph
+Each vertex has edge list
+Each edge(transition class) has from, to, and condition which is in parameters in Animator class
+When parameter in parameters changed, current vertex check condition and transit
+'''
 class Animator(Component):
     def __init__(self):
         super(Animator, self).__init__()
