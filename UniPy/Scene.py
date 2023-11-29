@@ -19,10 +19,6 @@ class Scene:
             #print(len(self.hierarchy))
             object.Update()
             try:
-                object.GetComponent("SpriteRenderer").Render(self.screen)
-            except:
-                pass
-            try:
                 object.GetComponent("Animator").Update()
             except:
                 pass
@@ -32,5 +28,9 @@ class Scene:
                 pass
             try:
                 object.GetComponent("CircleCollider").Update(self.screen)
+            except:
+                pass
+            try:
+                object.GetComponent("SpriteRenderer").Render(self.screen)
             except:
                 continue
