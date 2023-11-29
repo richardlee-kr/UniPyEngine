@@ -4,12 +4,8 @@ class Physics:
     def __init__(self, targetScene):
         self.scene = targetScene
 
-    '''
-    Add all objects which have Collider in Scene to list
-    Check if item in list is overlapped
-    Add overlapped item to list
-    Return list
-    '''
+# TODO Check rotated collision
+# AABB to OBB collision
 
     def OverlapCircleAll(self, point, radius, layer="Default"):
         allObjects = self.scene.hierarchy
