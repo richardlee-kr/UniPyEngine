@@ -18,6 +18,9 @@ class Vector:
     def __truediv__(self, d):
         return Vector(self.x/d, self.y/d)
 
+    def __neg__(self):
+        return Vector(-self.x, -self.y)
+
     def __eq__(self, other):
         return ((self.x==other.x) and (self.y==other.y))
 
