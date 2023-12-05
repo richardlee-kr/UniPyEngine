@@ -1,4 +1,5 @@
 from ..Vector import *
+import pygame
 
 class Physics:
     def __init__(self, targetScene):
@@ -14,7 +15,7 @@ class Physics:
         detected = list()
         for object in allObjects:
             if object.layer == layer:
-                if (object.transform.position - point).magnitude < 3*radius:
+                #if (object.transform.position - point).magnitude < 5*radius:
                     layered.append(object)
         
         del allObjects
@@ -30,20 +31,31 @@ class Physics:
                 try:
                     # else object has BoxCollider
                     objectPos = object.transform.position
-                    boundSize = object.GetComponent("BoxCollider").bounds.size
-                    testX = point.x
-                    testY = point.y
-                    if (point.x < objectPos.x-boundSize.x/2): testX = objectPos.x-boundSize.x/2
-                    elif (point.x > objectPos.x+boundSize.x/2): testX = objectPos.x+boundSize.x/2
-                    if (point.y < objectPos.y-boundSize.y/2): testY = objectPos.y-boundSize.y/2
-                    elif (point.y > objectPos.y+boundSize.y/2): testY = objectPos.y+boundSize.y/2
+                    boundSize = object.GetComponent("BoxCollider").bounds.size/2
+                    
+                    p = list()
+                    p_max = -math.inf
+                    distance = Vector.Distance(objectPos, point)
 
-                    distX = point.x-testX
-                    distY = point.y-testY
+                    p1 =  - Vector(boundSize.x, boundSize.y).Rotate(object.transform.rotation)
+                    p2 = - Vector(boundSize.x, -boundSize.y).Rotate(object.transform.rotation)
+                    p3 = - Vector(-boundSize.x, -boundSize.y).Rotate(object.transform.rotation)
+                    p4 = - Vector(-boundSize.x, boundSize.y).Rotate(object.transform.rotation)
 
-                    distance = math.sqrt((distX*distX)+(distY*distY))
+                    p.append(p1)
+                    p.append(p2)
+                    p.append(p3)
+                    p.append(p4)
 
-                    if(distance <= radius):
+                    #print(abs(Vector.Dot(p1, Vector.right))/16)
+
+                    for v in p:
+                        if abs(Vector.Dot(v,Vector.right)) > p_max:
+                            p_max = abs(Vector.Dot(v, Vector.right))
+
+                    #print(distance, p_max, radius)
+
+                    if(distance < p_max+radius):
                         detected.append(object)
                 except:
                     # no collider

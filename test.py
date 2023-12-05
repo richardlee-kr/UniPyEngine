@@ -4,15 +4,9 @@ import pygame
 
 _color = UniColor.green
 
-SCREEN_WIDTH = 400
-SCREEN_HEIGHT  = 500
-FPS = 60
-
 pygame.init()
 
 clock = pygame.time.Clock()
-
-SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 testScene = Scene("TestScene", SCREEN)
 pygame.display.set_caption(testScene.sceneName)
@@ -63,13 +57,14 @@ while playing:
 
     if pygame.mouse.get_pressed()[0] == 1:
         go1.transform.rotation += 1
+        #go1.transform.rotation = 45
     if pygame.mouse.get_pressed()[2] == 1:
         go1.transform.rotation = 0
 
     SCREEN.fill([0,0,0])
 
-    #detected = physics.OverlapCircleAll(Vector(200,250), 16)
-    detected = physics.OverlapBoxAll(Vector(200,250), 32)
+    detected = physics.OverlapCircleAll(Vector(200,250), 16)
+    #detected = physics.OverlapBoxAll(Vector(200,250), 32)
     #print(len(detected))
 
     if len(detected) > 0:
@@ -82,8 +77,8 @@ while playing:
 
     testScene.Update()
 
-    #pygame.draw.circle(SCREEN, _color, [200,250], 16 ,1)
-    pygame.draw.rect(SCREEN, _color, [200-16,250-16,32,32], 1)
+    pygame.draw.circle(SCREEN, _color, [200,250], 16 ,1)
+    #pygame.draw.rect(SCREEN, _color, [200-16,250-16,32,32], 1)
 
     pygame.display.flip()
     clock.tick(FPS)

@@ -14,8 +14,8 @@ import asyncio
 import pygame
 from pygame.locals import *
 
-WIDTH = 1080
-HEIGHT = 720
+WIDTH = 400
+HEIGHT = 500
 FPS = 30
 
 flags = DOUBLEBUF
@@ -26,6 +26,6 @@ SCREEN = pygame.display.set_mode((WIDTH,HEIGHT), flags, 8)
 pygame.event.set_allowed([QUIT, KEYDOWN, KEYUP])
 SCREEN.set_alpha(None)
 
-scene = Scene("Maverick Gunner", SCREEN)
+scene = Scene("Test", SCREEN)
 physics = Physics(scene)
 pygame.display.set_caption(scene.sceneName)
