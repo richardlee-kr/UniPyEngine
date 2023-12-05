@@ -32,6 +32,11 @@ class Vector:
     def Normalize(self):
         return Vector(self.x/self.magnitude, self.y/self.magnitude)
 
+    def Rotate(self, angle):
+        x = (self.x*math.cos(math.radians(angle)) - self.y*math.sin(math.radians(angle)))
+        y = (self.x*math.sin(math.radians(angle)) + self.y*math.cos(math.radians(angle)))
+        return Vector(x,y)
+
     @staticmethod
     def Angle(v1, v2):
         #return math.degrees(math.acos(Vector.Dot(v1, v2) / (v1.magnitude * v2.magnitude)))
