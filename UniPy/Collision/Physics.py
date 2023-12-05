@@ -64,12 +64,8 @@ class Physics:
         for object in layered:
             try:
                 #if obejct has BoxCollider
-                objectPos = object.transform.position
-                boundSize = object.GetComponent("BoxCollider").bounds.size
-                #print(objectPos.x + boundSize.x/2 >= point.x - size/2)
-                if (objectPos.x + boundSize.x/2 >= point.x - size/2 and objectPos.x - boundSize.x/2 <= point.x + size/2):
-                    if(objectPos.y + boundSize.y/2 >= point.y - size/2 and objectPos.y - boundSize.y/2 <= point.y + size/2):
-                        detected.append(object)
+                if (CheckShafts(object, point, size)):
+                    detected.append(object)
             except:
                 try:
                     # else object has CircleColldier
@@ -92,3 +88,27 @@ class Physics:
                     continue
 
         return detected
+
+def CheckShafts(obj, point, size):
+    m_vector = obj.transform.position - point
+    #print(m_vector)
+
+    if(CheckShaft(obj, point, size/16, m_vector, obj.transform.right)): return False
+    if(CheckShaft(obj, point, size/16, m_vector, obj.transform.up)): return False
+    if(CheckShaft(obj, point, size/16, m_vector, Vector.right)): return False
+    if(CheckShaft(obj, point, size/16, m_vector, Vector.up)): return False
+
+    return True
+
+def CheckShaft(obj, point, size, v, l):
+    distance = abs(Vector.Dot(v,l))/16
+    #print(distance)
+    #print(abs(Vector.Dot(l,obj.transform.right)))
+    #print(abs(Vector.Dot(l, obj.transform.right * obj.transform.scale.x * 0.5)))
+
+    if (distance > abs(Vector.Dot(l, obj.transform.up * obj.transform.scale.y * 0.5))
+        + abs(Vector.Dot(l, obj.transform.right * obj.transform.scale.x * 0.5))
+        + abs(Vector.Dot(l, Vector.up * size * 0.5))
+        + abs(Vector.Dot(l, Vector.right * size * 0.5))):
+        #print("Has Shaft")
+        return True
