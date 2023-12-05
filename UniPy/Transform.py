@@ -18,7 +18,9 @@ class Transform(Component):
     def Translate(self, v):
         self.position += v
 
+    def Update(self):
+        self.right = Vector(math.cos(math.radians(self.rotation)),math.sin(math.radians(self.rotation)))
+        self.up = Vector(-1 * math.sin(math.radians(self.rotation)), math.cos(math.radians(self.rotation)))
+
     def Rotate(self, angle):
         self.rotation += angle % 360
-        self.right = Vector(math.cos(math.radians(angle)),math.sin(math.radians(angle)))
-        self.up = Vector(-1 * math.sin(math.radians(angle)), math.cos(math.radians(angle)))

@@ -20,7 +20,7 @@ class GameObject:
                 return item
 
     def Update(self):
-        pass
+        self.transform.Update()
 
     def DestroyFrom(self, scene):
         scene.hierarchy.remove(self)
