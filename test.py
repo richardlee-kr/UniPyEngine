@@ -42,6 +42,7 @@ go1.AddComponent(BoxCollider(Vector(32,32)))
 
 go1.transform.position = Vector(250,250)
 go1.transform.scale = Vector.one * 2
+#go1.transform.rotation = 45
 
 #testScene.hierarchy.append(go)
 testScene.hierarchy.append(go1)
@@ -59,6 +60,11 @@ while playing:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             playing = False
+
+    if pygame.mouse.get_pressed()[0] == 1:
+        go1.transform.rotation = 45
+    if pygame.mouse.get_pressed()[2] == 1:
+        go1.transform.rotation = 0
 
     SCREEN.fill([0,0,0])
 
