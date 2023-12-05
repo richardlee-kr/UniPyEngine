@@ -5,10 +5,6 @@ class Physics:
     def __init__(self, targetScene):
         self.scene = targetScene
 
-    '''
-    TODO Check rotated collision
-    AABB to OBB collision
-    '''
     def OverlapCircleAll(self, point, radius, layer="Default"):
         allObjects = self.scene.hierarchy
         layered = list()
