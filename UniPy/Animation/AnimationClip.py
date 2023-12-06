@@ -1,4 +1,3 @@
-from .Transition import *
 from ..Sprite import *
 from ..SpriteRenderer import *
 import pygame
@@ -10,7 +9,6 @@ class AnimationClip:
         self.currentFrame = 0
         self.clock = clock
         self.fps = fps
-        self.transitions = list()
         self.timer = 0
 
     def AddBySpriteSheet(self, sheet):
@@ -34,9 +32,6 @@ class AnimationClip:
     def AddBySpriteList(self, sprites):
         for item in sprites:
             self.frames.append(item)
-
-    def AddTransition(self, transition):
-        self.transitions.append(transition)
     
     def Play(self):
         self.timer += self.clock.get_time() / 1000
