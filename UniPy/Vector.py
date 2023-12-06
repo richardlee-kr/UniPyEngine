@@ -1,7 +1,7 @@
 import math
 
 class Vector:
-    def __init__(self, x, y):
+    def __init__(self, x:float, y):
         if -1.0e-10 < x < 1.0e-10: x = 0
         if -10.e-10 < y < 1.0e-10: y = 0
 
@@ -35,7 +35,7 @@ class Vector:
     def Normalize(self):
         return Vector(self.x/self.magnitude, self.y/self.magnitude)
 
-    def Rotate(self, angle):
+    def Rotate(self, angle:float):
         x = (self.x*math.cos(math.radians(angle)) - self.y*math.sin(math.radians(angle)))
         y = (self.x*math.sin(math.radians(angle)) + self.y*math.cos(math.radians(angle)))
         return Vector(x,y)
@@ -54,11 +54,11 @@ class Vector:
         return math.sqrt(math.pow((v2-v1).magnitude,2))
 
     @staticmethod
-    def Dot(v1, v2):
+    def Dot(v1, v2) -> float:
         return (v1.x*v2.x + v1.y*v2.y)
 
     @staticmethod
-    def ToList(v):
+    def ToList(v) -> list:
         return (v.x, v.y)
 
     @staticmethod

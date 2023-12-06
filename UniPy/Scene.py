@@ -1,10 +1,13 @@
+import pygame
+from .GameObject import GameObject
+
 class Scene:
-    def __init__(self, name, screen):
+    def __init__(self, name:str, screen:pygame.Surface):
         self.sceneName = name
         self.screen = screen
         self.hierarchy = list()
 
-    def FindObject(self, name):
+    def FindObject(self, name:str) -> GameObject:
         for object in self.hierarchy:
             if object.name == name:
                 return object

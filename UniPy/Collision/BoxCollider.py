@@ -10,15 +10,15 @@ class BoxCollider(Collider):
         self.bounds = BoxBound(Vector.zero+self.offset, size)
         self.size = size
 
-    def Update(self, screen):
+    def Update(self, screen:pygame.Surface):
         if self.isVisible:
             self.Draw(screen)
 
-    def Draw(self, screen):
+    def Draw(self, screen:pygame.Surface):
         #rect = pygame.draw.rect(screen, UniColor.green, [self.transform.position.x-self.size.x/2, self.transform.position.y-self.size.y/2, self.size.x, self.size.y], 1)
         self.Rotate(screen)
 
-    def Rotate(self, screen):
+    def Rotate(self, screen:pygame.Surface):
         # define a surface (RECTANGLE)  
         image_orig = pygame.Surface((self.size.x , self.size.y))  
         # for making transparent background while rotating an image  

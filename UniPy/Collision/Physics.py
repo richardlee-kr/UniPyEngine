@@ -2,10 +2,10 @@ from ..Vector import *
 import pygame
 
 class Physics:
-    def __init__(self, targetScene):
+    def __init__(self, targetScene:pygame.Surface):
         self.scene = targetScene
 
-    def OverlapCircleAll(self, point, radius, layer="Default"):
+    def OverlapCircleAll(self, point:Vector, radius:float, layer="Default"):
         allObjects = self.scene.hierarchy
         layered = list()
         detected = list()
@@ -59,7 +59,7 @@ class Physics:
 
         return detected
 
-    def OverlapBoxAll(self, point, size, layer="Default"):
+    def OverlapBoxAll(self, point:Vector, size:float, layer="Default"):
         allObjects = self.scene.hierarchy
         layered = list()
         detected = list()

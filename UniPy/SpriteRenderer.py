@@ -4,12 +4,12 @@ from .Sprite import *
 import pygame
 
 class SpriteRenderer(Component):
-    def __init__(self, sprite = None):
+    def __init__(self, sprite:Sprite = None):
         super(SpriteRenderer, self).__init__()
         self.name = "SpriteRenderer"
         self.sprite = sprite
 
-    def Render(self, screen):
+    def Render(self, screen:pygame.Surface):
         if self.sprite != None:
             #TODO Set Flip
             #self.sprite.img = pygame.transform.flip(self.sprite.img, self.transform.scale.x < 0, self.transform.scale.y < 0)
@@ -20,7 +20,7 @@ class SpriteRenderer(Component):
                 self.Rotate(screen, self.transform.rotation)
     
     #ref: https://stackoverflow.com/questions/4183208/how-do-i-rotate-an-image-around-its-center-using-pygame
-    def Rotate(self, screen, angle):
+    def Rotate(self, screen:pygame.Surface, angle:float):
         image = self.sprite.img
         pos = Vector.ToList(self.transform.position)
         originPos = (self.sprite.img.get_width()/2, self.sprite.img.get_height()/2)

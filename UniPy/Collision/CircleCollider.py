@@ -10,9 +10,9 @@ class CircleCollider(Collider):
         self.bounds = CircleBound(Vector.zero+self.offset, radius)
         self.radius = radius
 
-    def Update(self, screen):
+    def Update(self, screen:pygame.Surface):
         if self.isVisible:
             self.Draw(screen)
 
-    def Draw(self, screen):
+    def Draw(self, screen:pygame.Surface):
         pygame.draw.circle(screen, UniColor.green, [self.transform.position.x, self.transform.position.y], self.radius, 1)
