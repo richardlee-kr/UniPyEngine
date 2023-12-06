@@ -5,7 +5,7 @@ class Physics:
     def __init__(self, targetScene:pygame.Surface):
         self.scene = targetScene
 
-    def OverlapCircleAll(self, point:Vector, radius:float, layer="Default"):
+    def OverlapCircleAll(self, point:Vector, radius:float, layer="Default") -> list:
         allObjects = self.scene.hierarchy
         layered = list()
         detected = list()
@@ -59,7 +59,7 @@ class Physics:
 
         return detected
 
-    def OverlapBoxAll(self, point:Vector, size:float, layer="Default"):
+    def OverlapBoxAll(self, point:Vector, size:float, layer="Default") -> list:
         allObjects = self.scene.hierarchy
         layered = list()
         detected = list()
@@ -97,7 +97,7 @@ class Physics:
 
         return detected
 
-def CheckShafts(obj, point, size):
+def CheckShafts(obj, point, size) -> bool:
     m_vector = obj.transform.position - point
     #print(m_vector)
 
@@ -108,7 +108,7 @@ def CheckShafts(obj, point, size):
 
     return True
 
-def CheckShaft(obj, point, size, v, l):
+def CheckShaft(obj, size, v, l) -> bool:
     distance = abs(Vector.Dot(v,l))/16
     #print(distance)
     #print(abs(Vector.Dot(l,obj.transform.right)))
