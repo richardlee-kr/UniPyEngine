@@ -2,6 +2,8 @@
 from ..Component import *
 from ..Vector import *
 
+gravity = Vector(0,1)
+
 class Rigidbody(Component):
     def __init__(self):
         super(Rigidbody, self).__init__()
@@ -17,3 +19,7 @@ class Rigidbody(Component):
 
     def AddForce(self, force:Vector):
         pass
+
+    def Update(self):
+        self.velocity += gravity
+        self.transform.Translate(self.velocity)

@@ -26,6 +26,10 @@ class Scene:
             #print(len(self.hierarchy))
             object.Update()
             try:
+                object.GetComponent("Rigidbody").Update()
+            except:
+                pass
+            try:
                 object.GetComponent("Animator").Update()
             except:
                 pass
