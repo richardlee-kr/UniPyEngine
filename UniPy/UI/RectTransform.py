@@ -6,5 +6,9 @@ class RectTransform(Transform):
         super(RectTransform, self).__init__()
         self.name = "RectTransform"
 
-        self.width = 100
-        self.height = 100
+        self.width = 2
+        self.height = 1
+
+    def Update(self, screen):
+        super(RectTransform, self).Update(screen)
+        self.transform.scale = Vector(self.width,self.height)
