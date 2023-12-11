@@ -38,14 +38,20 @@ class AnimGraph:
 
 # Change Node
     def ChangeNode(self, targetNode:AnimNode):
+        targetNode.clip.currentFrame = 0
+        targetNode.clip.isFinished = False
         self.currentNode = targetNode
 
 # Check whether animator transit
     def CheckTransition(self, paramName:str):
         for transition in self.currentNode.transitions:
+            #print("Check Transition by", paramName)
             if transition.condition.targetParamName == paramName:
+                #print("Find transition by", paramName)
                 shouldTransit = self.CheckCondition(self.GetParameter(paramName), self.currentNode.transitions)
+                #print("Should Transit by", paramName, "is", shouldTransit)
                 if shouldTransit:
+                    #print("ChangeNode to", transition.toNode.name)
                     self.ChangeNode(transition.toNode)
 
 # Check whether condition to transit is true
@@ -66,6 +72,7 @@ class AnimGraph:
                 return parameter.value != _condition.value
             elif _condition.conditionType == ConditionType.TRIGGERED:
                 parameter.value = False
+                #print("Trigger")
                 return True
 
     def GetParameter(self, name) -> Parameter:

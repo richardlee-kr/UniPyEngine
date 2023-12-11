@@ -26,9 +26,11 @@ go.layer = "Default"
 sprite1 = Sprite("Sprite/Character_Right.png")
 _clip1 = AnimationClip(clock, 8)
 _clip1.AddBySpriteSheet(sprite1)
+_clip1.looping = True
 sprite2 = Sprite("Sprite/Character_Left.png")
 _clip2 = AnimationClip(clock, 8)
 _clip2.AddBySpriteSheet(sprite2)
+_clip2.looping = False
 
 #go.GetComponent("Animator").SetClip(_clip1)
 _animator:Animator = go.GetComponent("Animator")
@@ -40,8 +42,11 @@ condition1 = Condition("FacingRight", "bool")
 condition1.value = True
 condition2 = Condition("FacingRight", "bool")
 condition2.value = False
+condition3 = Condition("unconditional","trigger")
+condition3.conditionType = ConditionType.TRIGGERED
 _animator.AddTransition("Right", "Left", condition1)
-_animator.AddTransition("Left", "Right", condition2)
+#_animator.AddTransition("Left", "Right", condition2)
+_animator.AddTransition("Left", "Right", condition3)
 
 
 #go.GetComponent("BoxCollider").OnTriggerEnter(func)
@@ -81,6 +86,7 @@ while playing:
         #go1.transform.rotation = 45
     if pygame.mouse.get_pressed()[2] == 1:
         _animator.SetBool("FacingRight", False)
+        #_animator.SetBool("FacingRight", True)
         #go.transform.rotation = 0
         #go.DestroyFrom(testScene)
         #_flag = True

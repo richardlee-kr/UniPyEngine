@@ -13,6 +13,7 @@ class Animator(Component):
 
         self.currentClip = None
         self.isPlaying = True
+        self.AddParameter("unconditional", "trigger")
 
     def Play(self): self.isPlaying = True
     def Stop(self): self.isPlaying = False
@@ -28,6 +29,9 @@ class Animator(Component):
         if self.isPlaying:
             #print("Playing")
             self.currentClip.Play()
+            if self.currentClip.isFinished == True:
+                print("Finished")
+                self.CheckTransition("unconditional")
 
 # Add elements
     def AddParameter(self, name:str, type:str):

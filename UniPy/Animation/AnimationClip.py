@@ -10,6 +10,8 @@ class AnimationClip:
         self.clock = clock
         self.fps = fps
         self.timer = 0
+        self.looping = False
+        self.isFinished = False
 
     def AddBySpriteSheet(self, sheet):
         size = sheet.img.get_height()
@@ -38,4 +40,10 @@ class AnimationClip:
         self.renderer.sprite = self.frames[self.currentFrame]
         if self.timer >= 1/self.fps:
             self.timer = 0
-            self.currentFrame = (self.currentFrame+1) % len(self.frames)
+            self.currentFrame += 1
+            if self.currentFrame >= len(self.frames):
+                if self.looping == True:
+                    self.currentFrame = 0
+                else:
+                    #print("Finished")
+                    self.isFinished = True
