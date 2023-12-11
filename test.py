@@ -80,9 +80,8 @@ canvas.AddComponent(Canvas(SCREEN))
 
 scene.hierarchy.append(canvas)
 
-_sprite = Sprite("Sprite/DefaultSprite.png")
 image = UI("Image")
-image.AddComponent(Image(_sprite))
+image.AddComponent(Image())
 image.transform.parent = canvas.transform
 
 text = UI("Text")
@@ -90,8 +89,18 @@ text.AddComponent(Text("Test"))
 text.transform.parent = canvas.transform
 text.transform.position = Vector(0,-50)
 
+button = UI("Button")
+button.AddComponent(Image())
+t = button.AddComponent(Text("Button"))
+t.fontColor = UniColor.black
+t.fontSize = 15
+button.AddComponent(Button())
+button.transform.parent = canvas.transform
+button.transform.position = Vector(0, 0)
+
 #scene.hierarchy.append(image)
-scene.hierarchy.append(text)
+#scene.hierarchy.append(text)
+scene.hierarchy.append(button)
 
 '''
 def func(other):
