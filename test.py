@@ -66,12 +66,27 @@ go1.transform.scale = Vector.one * 2
 scene.hierarchy.append(go1)
 '''
 
+'''
 audioClip1 = AudioClip("Audio/sfx.wav")
 go2 = GameObject("AudioSourceTest")
 go2.AddComponent(AudioSource())
 audioSource = go2.GetComponent("AudioSource")
 audioSource.clip = audioClip1
 audioSource.set_volume(0.1)
+'''
+canvas = UI("Canvas")
+canvas.transform.position = Vector(WIDTH/2, HEIGHT/2)
+canvas.AddComponent(Canvas(SCREEN))
+
+scene.hierarchy.append(canvas)
+
+_sprite = Sprite("Sprite/DefaultSprite.png")
+image = UI("Image")
+image.AddComponent(Image(_sprite))
+image.transform.parent = canvas.transform
+
+
+scene.hierarchy.append(image)
 
 '''
 def func(other):
@@ -88,13 +103,13 @@ while playing:
             playing = False
 
     if pygame.mouse.get_pressed()[0] == 1:
-        audioSource.Play()
+        #audioSource.Play()
         #_animator.SetBool("FacingRight", True)
         #go.transform.rotation += 1
         #go1.transform.rotation = 45
         pass
     if pygame.mouse.get_pressed()[2] == 1:
-        audioSource.Stop()
+        #audioSource.Stop()
         #_animator.SetBool("FacingRight", True)
         #_animator.SetBool("FacingRight", False)
         #_animator.SetBool("FacingRight", True)

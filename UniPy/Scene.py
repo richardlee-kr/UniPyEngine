@@ -1,8 +1,7 @@
 import pygame
 
 '''
-TODO
-- SceneManagement; LoadScene(Change Scene)
+TODO SceneManagement; LoadScene(Change Scene)
 '''
 
 class Scene:
@@ -39,6 +38,10 @@ class Scene:
                 pass
             try:
                 object.GetComponent("CircleCollider").Update(self.screen)
+            except:
+                pass
+            try:
+                object.GetComponent("Image").Render(self.screen)
             except:
                 pass
             try:
