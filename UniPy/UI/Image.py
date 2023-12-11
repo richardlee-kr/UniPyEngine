@@ -8,10 +8,14 @@ class Image(Component):
         super(Image, self).__init__()
         self.name = "Image"
         self.sprite = sprite
+        self.color = UniColor.white
 
     def Update(self, screen:pygame.Surface):
         if self.sprite != None:
             self.sprite.img = pygame.transform.scale(self.sprite.img, Vector.ToList(Vector.Abs(self.transform.scale) * self.sprite.PPU))
+            colorImage = pygame.Surface(self.sprite.img.get_size()).convert_alpha()
+            colorImage.fill(self.color)
+            self.sprite.img = colorImage
             if self.transform.rotation == 0:
                 screen.blit(self.sprite.img, (Vector.ToList(self.transform.relativePosition - self.transform.scale * self.sprite.PPU/2)))
             else:
