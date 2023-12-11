@@ -3,11 +3,6 @@ from .AnimationClip import AnimationClip
 from .Condition import *
 from .Parameter import Parameter
 
-'''
-TODO
-- Transition when animation end
-'''
-
 class AnimGraph:
     def __init__(self, animator, entry:AnimNode = None):
         self.animator = animator
