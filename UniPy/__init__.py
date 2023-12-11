@@ -1,16 +1,18 @@
+from .Animation import *
+from .Audio import *
+from .Collision import *
+from .UI import *
+
+from .Camera import *
 from .Component import *
 from .GameObject import *
-from .Transform import *
-from .Vector import *
-from .SpriteRenderer import *
-from .Sprite import *
-from .Animation import *
-from .Collision import *
 from .Scene import *
-from .Camera import *
+from .Sprite import *
+from .SpriteRenderer import *
+from .Transform import *
 from .UniColor import *
+from .Vector import *
 
-import asyncio
 import pygame
 from pygame.locals import *
 

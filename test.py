@@ -51,6 +51,7 @@ _animator.AddTransition("Left", "Right", condition3)
 
 scene.hierarchy.append(go)
 '''
+'''
 sprite = Sprite("Sprite/Character_Right1.png")
 go1 = GameObject("RigidbodyTest")
 go1.AddComponent(SpriteRenderer(sprite))
@@ -63,10 +64,16 @@ go1.transform.scale = Vector.one * 2
 #go1.transform.rotation = 45
 
 scene.hierarchy.append(go1)
+'''
+
+audioClip1 = AudioClip("Audio/sfx.wav")
+go2 = GameObject("AudioSourceTest")
+go2.AddComponent(AudioSource())
+audioSource = go2.GetComponent("AudioSource")
+audioSource.clip = audioClip1
+audioSource.set_volume(0.1)
 
 '''
-#testScene.hierarchy.append(go1)
-
 def func(other):
     if(other.name == "asdf"):
         print(other.name)
@@ -80,18 +87,21 @@ while playing:
         if event.type == pygame.QUIT:
             playing = False
 
-    '''
     if pygame.mouse.get_pressed()[0] == 1:
-        _animator.SetBool("FacingRight", True)
+        audioSource.Play()
+        #_animator.SetBool("FacingRight", True)
         #go.transform.rotation += 1
         #go1.transform.rotation = 45
+        pass
     if pygame.mouse.get_pressed()[2] == 1:
-        _animator.SetBool("FacingRight", False)
+        audioSource.Stop()
+        #_animator.SetBool("FacingRight", True)
+        #_animator.SetBool("FacingRight", False)
         #_animator.SetBool("FacingRight", True)
         #go.transform.rotation = 0
         #go.DestroyFrom(testScene)
         #_flag = True
-    '''
+        pass
 
     SCREEN.fill([0,0,0])
 
