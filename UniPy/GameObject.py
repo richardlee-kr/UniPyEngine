@@ -28,7 +28,8 @@ class GameObject:
         del self
 
     @staticmethod
-    def Instantiate(scene, object, pos:Vector, rot:float):
+    def Instantiate(scene, object, pos:Vector, rot:float, parent):
         scene.hierarchy.append(object)
         object.transform.position = pos
         object.transform.Rotate(rot)
+        object.transform.parent = parent
