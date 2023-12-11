@@ -4,12 +4,12 @@ from ..Sprite import *
 from ..UniColor import *
 
 class Image(Component):
-    def __init__(self, sprite:Sprite):
+    def __init__(self, sprite:Sprite  = Sprite("Sprite/DefaultSprite.png")):
         super(Image, self).__init__()
         self.name = "Image"
         self.sprite = sprite
 
-    def Render(self, screen:pygame.Surface):
+    def Update(self, screen:pygame.Surface):
         if self.sprite != None:
             self.sprite.img = pygame.transform.scale(self.sprite.img, Vector.ToList(Vector.Abs(self.transform.scale) * self.sprite.PPU))
             if self.transform.rotation == 0:
