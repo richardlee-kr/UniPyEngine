@@ -16,18 +16,45 @@ physics = Physics(testScene)
 go = GameObject("TestObject")
 go.AddComponent(SpriteRenderer())
 go.AddComponent(Animator())
-#go.AddComponent(BoxCollider())
-go.AddComponent(CircleCollider(radius=16))
+go.AddComponent(BoxCollider(Vector(32,32)))
+#go.AddComponent(CircleCollider(radius=16))
 
 go.transform.position = Vector(200,250)
 go.transform.scale = Vector.one * 2
-go.layer = "NOT"
+go.layer = "Default"
 
-sprite = Sprite("Sprite/Character_Right.png")
-_clip = AnimationClip(clock, 8)
-_clip.AddBySpriteSheet(sprite)
-go.GetComponent("Animator").SetClip(_clip)
+sprite1 = Sprite("Sprite/Character_Right.png")
+_clip1 = AnimationClip(clock, 8)
+_clip1.AddBySpriteSheet(sprite1)
+_clip1.looping = True
+sprite2 = Sprite("Sprite/Character_Left.png")
+_clip2 = AnimationClip(clock, 8)
+_clip2.AddBySpriteSheet(sprite2)
+_clip2.looping = False
 
+#go.GetComponent("Animator").SetClip(_clip1)
+_animator:Animator = go.GetComponent("Animator")
+_animator.AddParameter("FacingRight", "bool")
+_animator.AddNode("Right", _clip1)
+_animator.AddNode("Left", _clip2)
+
+condition1 = Condition("FacingRight", "bool")
+condition1.value = True
+condition2 = Condition("FacingRight", "bool")
+condition2.value = False
+condition3 = Condition("unconditional","trigger")
+condition3.conditionType = ConditionType.TRIGGERED
+_animator.AddTransition("Right", "Left", condition1)
+#_animator.AddTransition("Left", "Right", condition2)
+_animator.AddTransition("Left", "Right", condition3)
+
+
+#go.GetComponent("BoxCollider").OnTriggerEnter(func)
+#go.transform.scale = Vector(-1,1) * 5
+
+testScene.hierarchy.append(go)
+
+'''
 sprite = Sprite("Sprite/Character_Right1.png")
 go1 = GameObject("TestObject1")
 go1.AddComponent(SpriteRenderer(sprite))
@@ -38,16 +65,14 @@ go1.transform.position = Vector(250,250)
 go1.transform.scale = Vector.one * 2
 #go1.transform.rotation = 45
 
-#testScene.hierarchy.append(go)
-testScene.hierarchy.append(go1)
+#testScene.hierarchy.append(go1)
 
 def func(other):
     if(other.name == "asdf"):
         print(other.name)
+'''
 
-#go.GetComponent("BoxCollider").OnTriggerEnter(func)
-
-#go.transform.scale = Vector(-1,1) * 5
+_flag = False
 
 playing = True
 while playing:
@@ -56,10 +81,15 @@ while playing:
             playing = False
 
     if pygame.mouse.get_pressed()[0] == 1:
-        go1.transform.rotation += 1
+        _animator.SetBool("FacingRight", True)
+        #go.transform.rotation += 1
         #go1.transform.rotation = 45
     if pygame.mouse.get_pressed()[2] == 1:
-        go1.transform.rotation = 0
+        _animator.SetBool("FacingRight", False)
+        #_animator.SetBool("FacingRight", True)
+        #go.transform.rotation = 0
+        #go.DestroyFrom(testScene)
+        #_flag = True
 
     SCREEN.fill([0,0,0])
 
@@ -72,8 +102,10 @@ while playing:
     else:
         _color = UniColor.green
 
+    #print(_animator.isPlaying)
+    #print(_animator.currentClip)
 
-    go1.transform.position = Vector(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
+    go.transform.position = Vector(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
 
     testScene.Update()
 

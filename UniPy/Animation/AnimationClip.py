@@ -1,4 +1,3 @@
-from .Transition import *
 from ..Sprite import *
 from ..SpriteRenderer import *
 import pygame
@@ -10,8 +9,9 @@ class AnimationClip:
         self.currentFrame = 0
         self.clock = clock
         self.fps = fps
-        self.transitions = list()
         self.timer = 0
+        self.looping = False
+        self.isFinished = False
 
     def AddBySpriteSheet(self, sheet):
         size = sheet.img.get_height()
@@ -34,13 +34,16 @@ class AnimationClip:
     def AddBySpriteList(self, sprites):
         for item in sprites:
             self.frames.append(item)
-
-    def AddTransition(self, transition):
-        self.transitions.append(transition)
     
     def Play(self):
         self.timer += self.clock.get_time() / 1000
         self.renderer.sprite = self.frames[self.currentFrame]
         if self.timer >= 1/self.fps:
             self.timer = 0
-            self.currentFrame = (self.currentFrame+1) % len(self.frames)
+            self.currentFrame += 1
+            if self.currentFrame >= len(self.frames):
+                if self.looping == True:
+                    self.currentFrame = 0
+                else:
+                    #print("Finished")
+                    self.isFinished = True

@@ -1,5 +1,9 @@
 import pygame
-from .GameObject import GameObject
+
+'''
+TODO
+- SceneManagement; LoadScene(Change Scene)
+'''
 
 class Scene:
     def __init__(self, name:str, screen:pygame.Surface):
@@ -7,7 +11,7 @@ class Scene:
         self.screen = screen
         self.hierarchy = list()
 
-    def FindObject(self, name:str) -> GameObject:
+    def FindObject(self, name:str) :
         for object in self.hierarchy:
             if object.name == name:
                 return object
@@ -16,7 +20,7 @@ class Scene:
     def Update(self):
         for object in self.hierarchy:
             if object.transform.position.x > 1080 + 20 or object.transform.position.x < 0 - 20 or object.transform.position.y > 720 + 20 or object.transform.position.y < 0 - 20:
-                self.hierarchy.remove(object)
+                object.DestroyFrom(self)
                 continue
 
             #print(len(self.hierarchy))
