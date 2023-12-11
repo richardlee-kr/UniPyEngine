@@ -8,12 +8,17 @@ class Button(Component):
         self.name = "Button"
         self.action = action
 
+        self.normalColor = UniColor.white
+        self.hoverColor = (200,200,200)
+
         self.isClicked = False
 
     def Update(self, screen):
+        image:Image = self.gameObject.GetComponent("Image")
         #print(self.transform.relativePosition)
         click = pygame.mouse.get_pressed()
         if self.IsMouseHover():
+            image.color = self.hoverColor
             if click[0] == 1 and self.isClicked == False:
                 self.isClicked = True
                 print("buttonClicked")
@@ -21,6 +26,8 @@ class Button(Component):
                     self.action()
             if click[0] == 0 and self.isClicked == True:
                 self.isClicked = False
+        else:
+            image.color = self.normalColor
 
     
     def IsMouseHover(self) -> bool:
