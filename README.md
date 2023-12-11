@@ -3,6 +3,7 @@ UniPyEngine is unity-like 2D game engine based on pygame.
 
 # Features
 - AnimationClip
+- Animator
 - Collision
 - GameObject
 - Scene
@@ -12,7 +13,6 @@ UniPyEngine is unity-like 2D game engine based on pygame.
 - Vector
 
 # In Development
-- Animator
 - AudioSource
 - AudioClip
 - Collider
@@ -20,6 +20,7 @@ UniPyEngine is unity-like 2D game engine based on pygame.
     - OnTriggerStay
     - OnTriggerExit
 - Rigidbody
+- SceneManagement
 - UI
     - Text
     - Button
