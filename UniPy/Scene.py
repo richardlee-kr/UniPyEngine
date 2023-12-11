@@ -18,7 +18,7 @@ class Scene:
 
     def Update(self):
         for object in self.hierarchy:
-            if object.transform.position.x > 1080 + 20 or object.transform.position.x < 0 - 20 or object.transform.position.y > 720 + 20 or object.transform.position.y < 0 - 20:
+            if object.transform.relativePosition.x > 1080 + 20 or object.transform.relativePosition.x < 0 - 20 or object.transform.relativePosition.y > 720 + 20 or object.transform.relativePosition.y < 0 - 20:
                 object.DestroyFrom(self)
                 continue
 
@@ -42,6 +42,10 @@ class Scene:
                 pass
             try:
                 object.GetComponent("Image").Render(self.screen)
+            except:
+                pass
+            try:
+                object.GetComponent("Text").Update(self.screen)
             except:
                 pass
             try:

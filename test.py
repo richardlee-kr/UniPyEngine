@@ -85,8 +85,13 @@ image = UI("Image")
 image.AddComponent(Image(_sprite))
 image.transform.parent = canvas.transform
 
+text = UI("Text")
+text.AddComponent(Text("Test"))
+text.transform.parent = canvas.transform
+text.transform.position = Vector(0,-50)
 
-scene.hierarchy.append(image)
+#scene.hierarchy.append(image)
+scene.hierarchy.append(text)
 
 '''
 def func(other):
