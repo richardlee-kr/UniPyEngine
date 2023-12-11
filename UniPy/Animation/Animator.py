@@ -23,7 +23,7 @@ class Animator(Component):
         self.currentClip = clip
         self.currentClip.renderer = self.gameObject.GetComponent("SpriteRenderer")
 
-    def Update(self):
+    def Update(self, screen):
         if self.currentClip != self.animGraph.currentNode.clip:
             self.SetClip(self.animGraph.currentNode.clip)
         if self.isPlaying:

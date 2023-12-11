@@ -23,7 +23,10 @@ class Scene:
                 continue
 
             #print(len(self.hierarchy))
-            object.Update()
+            #object.Update()
+            for comp in object.components:
+                object.GetComponent(comp.name).Update(self.screen)
+            '''
             try:
                 object.GetComponent("Rigidbody").Update()
             except:
@@ -41,7 +44,7 @@ class Scene:
             except:
                 pass
             try:
-                object.GetComponent("Image").Render(self.screen)
+                object.GetComponent("Image").Update(self.screen)
             except:
                 pass
             try:
@@ -49,6 +52,11 @@ class Scene:
             except:
                 pass
             try:
-                object.GetComponent("SpriteRenderer").Render(self.screen)
+                object.GetComponent("Button").Update(self.screen)
+            except:
+                pass
+            try:
+                object.GetComponent("SpriteRenderer").Update(self.screen)
             except:
                 continue
+            '''

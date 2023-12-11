@@ -9,7 +9,7 @@ class SpriteRenderer(Component):
         self.name = "SpriteRenderer"
         self.sprite = sprite
 
-    def Render(self, screen:pygame.Surface):
+    def Update(self, screen:pygame.Surface):
         if self.sprite != None:
             #TODO Set Flip
             #self.sprite.img = pygame.transform.flip(self.sprite.img, self.transform.scale.x < 0, self.transform.scale.y < 0)

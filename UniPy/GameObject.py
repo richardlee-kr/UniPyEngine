@@ -14,14 +14,12 @@ class GameObject:
         self.components.append(cmpnt)
         cmpnt.gameObject = self
         cmpnt.transform = self.transform
+        return self.GetComponent(cmpnt.name)
 
     def GetComponent(self, cmpnt:Component) -> Component:
         for item in self.components:
             if cmpnt == item.name:
                 return item
-
-    def Update(self):
-        self.transform.Update()
 
     def DestroyFrom(self, scene:Scene):
         scene.hierarchy.remove(self)

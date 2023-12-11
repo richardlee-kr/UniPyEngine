@@ -19,7 +19,7 @@ class Transform(Component):
     def Translate(self, v:Vector):
         self.position += v
 
-    def Update(self):
+    def Update(self, screen):
         self.right = Vector(math.cos(math.radians(self.rotation)),math.sin(math.radians(self.rotation)))
         self.up = Vector(-1 * math.sin(math.radians(self.rotation)), math.cos(math.radians(self.rotation)))
         if self.parent != None:

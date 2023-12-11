@@ -3,3 +3,6 @@ class Component:
         self.gameObject = None
         self.transform = None
         self.name = ""
+
+    def Update(self, screen):
+        pass

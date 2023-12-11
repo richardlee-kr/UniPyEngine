@@ -20,6 +20,6 @@ class Rigidbody(Component):
     def AddForce(self, force:Vector):
         pass
 
-    def Update(self):
+    def Update(self, screen):
         self.velocity += gravity
         self.transform.Translate(self.velocity)
