@@ -8,11 +8,8 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-testScene = Scene("TestScene", SCREEN)
-pygame.display.set_caption(testScene.sceneName)
 
-physics = Physics(testScene)
-
+'''
 go = GameObject("TestObject")
 go.AddComponent(SpriteRenderer())
 go.AddComponent(Animator())
@@ -52,19 +49,22 @@ _animator.AddTransition("Left", "Right", condition3)
 #go.GetComponent("BoxCollider").OnTriggerEnter(func)
 #go.transform.scale = Vector(-1,1) * 5
 
-testScene.hierarchy.append(go)
-
+scene.hierarchy.append(go)
 '''
 sprite = Sprite("Sprite/Character_Right1.png")
-go1 = GameObject("TestObject1")
+go1 = GameObject("RigidbodyTest")
 go1.AddComponent(SpriteRenderer(sprite))
-go1.AddComponent(BoxCollider(Vector(32,32)))
-#go1.AddComponent(CircleCollider(radius=16))
+#go1.AddComponent(BoxCollider(Vector(32,32)))
+go1.AddComponent(CircleCollider(radius=16))
+#go1.AddComponent(Rigidbody())
 
-go1.transform.position = Vector(250,250)
+go1.transform.position = Vector(200,250)
 go1.transform.scale = Vector.one * 2
 #go1.transform.rotation = 45
 
+scene.hierarchy.append(go1)
+
+'''
 #testScene.hierarchy.append(go1)
 
 def func(other):
@@ -80,6 +80,7 @@ while playing:
         if event.type == pygame.QUIT:
             playing = False
 
+    '''
     if pygame.mouse.get_pressed()[0] == 1:
         _animator.SetBool("FacingRight", True)
         #go.transform.rotation += 1
@@ -90,12 +91,17 @@ while playing:
         #go.transform.rotation = 0
         #go.DestroyFrom(testScene)
         #_flag = True
+    '''
 
     SCREEN.fill([0,0,0])
 
+    '''
     detected = physics.OverlapCircleAll(Vector(200,250), 16)
     #detected = physics.OverlapBoxAll(Vector(200,250), 32)
     #print(len(detected))
+
+    #pygame.draw.circle(SCREEN, _color, [200,250], 16 ,1)
+    #pygame.draw.rect(SCREEN, _color, [200-16,250-16,32,32], 1)
 
     if len(detected) > 0:
         _color = UniColor.red
@@ -105,12 +111,10 @@ while playing:
     #print(_animator.isPlaying)
     #print(_animator.currentClip)
 
-    go.transform.position = Vector(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
+    #go.transform.position = Vector(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
+    '''
 
-    testScene.Update()
-
-    pygame.draw.circle(SCREEN, _color, [200,250], 16 ,1)
-    #pygame.draw.rect(SCREEN, _color, [200-16,250-16,32,32], 1)
+    scene.Update()
 
     pygame.display.flip()
     clock.tick(FPS)
