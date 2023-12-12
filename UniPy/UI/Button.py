@@ -21,7 +21,6 @@ class Button(Component):
             image.color = self.hoverColor
             if click[0] == 1 and self.isClicked == False:
                 self.isClicked = True
-                print("buttonClicked")
                 if self.action != None:
                     self.action()
             if click[0] == 0 and self.isClicked == True:
