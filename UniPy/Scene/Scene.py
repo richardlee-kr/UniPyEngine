@@ -1,9 +1,5 @@
 import pygame
 
-'''
-TODO SceneManagement; LoadScene(Change Scene)
-'''
-
 class Scene:
     def __init__(self, name:str, screen:pygame.Surface):
         self.sceneName = name

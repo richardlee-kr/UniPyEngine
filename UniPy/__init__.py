@@ -1,12 +1,12 @@
 from .Animation import *
 from .Audio import *
 from .Collision import *
+from .Scene import *
 from .UI import *
 
 from .Camera import *
 from .Component import *
 from .GameObject import *
-from .Scene import *
 from .Sprite import *
 from .SpriteRenderer import *
 from .Transform import *
@@ -28,6 +28,4 @@ SCREEN = pygame.display.set_mode((WIDTH,HEIGHT), flags, 8)
 pygame.event.set_allowed([QUIT, KEYDOWN, KEYUP])
 SCREEN.set_alpha(None)
 
-scene = Scene("Test", SCREEN)
-physics = Physics(scene)
-pygame.display.set_caption(scene.sceneName)
+sceneManager = SceneManager()

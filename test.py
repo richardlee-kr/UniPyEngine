@@ -4,6 +4,17 @@ import pygame
 
 _color = UniColor.green
 
+scene = Scene("Test", SCREEN)
+sceneManager.AddScene(scene)
+sceneManager.LoadScene(0)
+
+physics = Physics(sceneManager.currentScene)
+pygame.display.set_caption(sceneManager.currentScene.sceneName)
+
+scene2 = Scene("Test2", SCREEN)
+sceneManager.AddScene(scene2)
+
+
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -101,7 +112,6 @@ button.transform.position = Vector(0, 0)
 #scene.hierarchy.append(image)
 #scene.hierarchy.append(text)
 scene.hierarchy.append(button)
-
 '''
 def func(other):
     if(other.name == "asdf"):
@@ -117,6 +127,7 @@ while playing:
             playing = False
 
     if pygame.mouse.get_pressed()[0] == 1:
+        #sceneManager.LoadScene(1)
         #audioSource.Play()
         #_animator.SetBool("FacingRight", True)
         #go.transform.rotation += 1
@@ -153,7 +164,7 @@ while playing:
     #go.transform.position = Vector(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
     '''
 
-    scene.Update()
+    sceneManager.currentScene.Update()
 
     pygame.display.flip()
     clock.tick(FPS)
