@@ -15,14 +15,14 @@ class SpriteRenderer(Component):
             #self.sprite.img = pygame.transform.flip(self.sprite.img, self.transform.scale.x < 0, self.transform.scale.y < 0)
             self.sprite.img = pygame.transform.scale(self.sprite.img, Vector.ToList(Vector.Abs(self.transform.scale) * self.sprite.PPU))
             if self.transform.rotation == 0:
-                screen.blit(self.sprite.img, (Vector.ToList(self.transform.relativePosition - self.transform.scale * self.sprite.PPU/2)))
+                screen.blit(self.sprite.img, (Vector.ToList(self.transform.position - self.transform.scale * self.sprite.PPU/2)))
             else:
                 self.Rotate(screen, self.transform.rotation)
     
     #ref: https://stackoverflow.com/questions/4183208/how-do-i-rotate-an-image-around-its-center-using-pygame
     def Rotate(self, screen:pygame.Surface, angle:float):
         image = self.sprite.img
-        pos = Vector.ToList(self.transform.relativePosition)
+        pos = Vector.ToList(self.transform.position)
         originPos = (self.sprite.img.get_width()/2, self.sprite.img.get_height()/2)
 
         image_rect = image.get_rect(topleft = (pos[0] - originPos[0], pos[1]-originPos[1]))
