@@ -101,11 +101,16 @@ def CheckShafts(obj, point, size) -> bool:
     m_vector = obj.transform.position - point
     #print(m_vector)
 
-    if(CheckShaft(obj, point, size/16, m_vector, obj.transform.right)): return False
-    if(CheckShaft(obj, point, size/16, m_vector, obj.transform.up)): return False
-    if(CheckShaft(obj, point, size/16, m_vector, Vector.right)): return False
-    if(CheckShaft(obj, point, size/16, m_vector, Vector.up)): return False
+    if(CheckShaft(obj, size/16, m_vector, obj.transform.right)):
+        return False
+    if(CheckShaft(obj, size/16, m_vector, obj.transform.up)):
+        return False
+    if(CheckShaft(obj, size/16, m_vector, Vector.right)):
+        return False
+    if(CheckShaft(obj, size/16, m_vector, Vector.up)):
+        return False
 
+    #print("5")
     return True
 
 def CheckShaft(obj, size, v, l) -> bool:
