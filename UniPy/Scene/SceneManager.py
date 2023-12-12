@@ -1,8 +1,6 @@
 from .Scene import *
 from ..Collision import *
-'''
-TODO SceneManagement; LoadScene(Change Scene)
-'''
+
 class SceneManager:
     def __init__(self):
         self.sceneList = list()
