@@ -20,6 +20,7 @@ UniPyEngine is unity-like 2D game engine based on pygame.
 - Vector
 
 # In Development
+- Animation Event
 - Audio
     - Spatial Audio with Camera
 - Camera
