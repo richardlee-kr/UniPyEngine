@@ -37,6 +37,6 @@ UniPyEngine is unity-like 2D game engine based on pygame.
 
 # Further Goals
 - Asset Management
-- Class import 
 - Custom Script
 - Engine GUI
+- Improvement of Class Relationships and imports
