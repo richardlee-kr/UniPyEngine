@@ -1,3 +1,5 @@
+# TODO Enable/Disable
+
 class Component:
     def __init__(self):
         self.gameObject = None

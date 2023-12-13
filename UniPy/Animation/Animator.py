@@ -3,6 +3,8 @@ from .AnimGraph import *
 from .Parameter import *
 from .AnimationClip import *
 
+# TODO AnyState Transition
+
 class Animator(Component):
     def __init__(self):
         super(Animator, self).__init__()
