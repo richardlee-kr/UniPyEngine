@@ -28,6 +28,9 @@ UniPyEngine is unity-like 2D game engine based on pygame.
     - OnTriggerEnter
     - OnTriggerStay
     - OnTriggerExit
+    - OnCollisionEnter
+    - OnCollisionStay
+    - OnCollisionExit
 - Input
 - Particles
 - Rigidbody
